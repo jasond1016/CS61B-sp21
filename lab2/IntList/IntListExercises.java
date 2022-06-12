@@ -73,10 +73,12 @@ public class IntListExercises {
 
         boolean currElemIsPrime = Primes.isPrime(lst.first);
 
+        boolean isSquared = false;
         if (currElemIsPrime) {
+            isSquared = true;
             lst.first *= lst.first;
         }
 
-        return currElemIsPrime || squarePrimes(lst.rest);
+        return squarePrimes(lst.rest) || isSquared;
     }
 }

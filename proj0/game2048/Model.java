@@ -111,9 +111,56 @@ public class Model extends Observable {
         boolean changed;
         changed = false;
 
-        // TODO: Modify this.board (and perhaps this.score) to account
+        // adjust viewing perspective
+        board.setViewingPerspective(side);
+
         // for the tilt to the Side SIDE. If the board changed, set the
         // changed local variable to true.
+        int size = board.size();
+
+        // iterate columns from left to right
+        for (int c = 0; c < size; c++) {
+            // ceilRow is the ceiling row one can possibly move to
+            int ceilRow = size - 1;
+            // it's safe to iterate from the top row down
+            for (int r = size - 2; r >= 0; r--) {
+                Tile tile = board.tile(c, r);
+                // skip empty tile
+                if (tile == null) {
+                    continue;
+                }
+
+                // calculate the destination row to move to
+                int destRow = r + 1;
+                while (destRow <= ceilRow) {
+                    Tile destTile = board.tile(c, destRow);
+                    if (destTile == null) {
+                        // empty tile, need to go further
+                        destRow++;
+                    } else if (destTile.value() == tile.value()) {
+                        // merge case
+                        ceilRow = destRow - 1;
+                        destRow++;
+                    } else {
+                        // no merge here
+                        ceilRow = destRow - 1;
+                    }
+                }
+                destRow--;
+
+                if (r != destRow) {
+                    // if moved, then make changed true
+                    changed = true;
+                    if (board.move(c, destRow, tile)) {
+                        // if merged, update score
+                        score += board.tile(c, destRow).value();
+                    }
+                }
+            }
+        }
+
+        // restore viewing perspective
+        board.setViewingPerspective(Side.NORTH);
 
         checkGameOver();
         if (changed) {

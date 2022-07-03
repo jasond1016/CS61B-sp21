@@ -28,7 +28,7 @@ public class TimeAList {
 
         int n = 1000;
         int x = 1;
-        while (x <= 15) {
+        while (x <= 8) {
             Ns.addLast(n);
             opCounts.addLast(n);
 

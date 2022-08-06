@@ -60,6 +60,7 @@ public class ArrayDeque<T> {
         }
         int firstIndex = rightNeighbor(nextFirst);
         T first = items[firstIndex];
+        items[firstIndex] = null;
         nextFirst = firstIndex;
         size--;
         return first;
@@ -71,6 +72,7 @@ public class ArrayDeque<T> {
         }
         int lastIndex = leftNeighbor(nextLast);
         T last = items[lastIndex];
+        items[lastIndex] = null;
         nextLast = lastIndex;
         size--;
         return last;
@@ -86,7 +88,14 @@ public class ArrayDeque<T> {
 
     // index > 0 means moving to right, otherwise left.
     private int indexOf(int curr, int stepsOfMovingToRight) {
-        return Math.abs(curr + stepsOfMovingToRight) % items.length;
+        int i = curr + stepsOfMovingToRight;
+        if (i >= items.length) {
+            return i % items.length;
+        }
+        if (i < 0) {
+            return items.length + (i % items.length);
+        }
+        return i;
     }
 
 //    public Iterator<T> iterator() {

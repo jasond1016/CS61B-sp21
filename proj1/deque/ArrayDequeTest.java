@@ -139,17 +139,19 @@ public class ArrayDequeTest {
         lld1.addLast(8);
 
         assertEquals(8, lld1.size);
+        lld1.printDeque();
 
-        lld1.removeFirst();
-        lld1.removeFirst();
-        lld1.removeFirst();
-        lld1.removeFirst();
-        lld1.removeLast();
-        lld1.removeLast();
-        lld1.removeLast();
-        lld1.removeLast();
+        assertEquals(4, (long) lld1.removeFirst());
+        assertEquals(3, (long) lld1.removeFirst());
+        assertEquals(2, (long) lld1.removeFirst());
+        assertEquals(1, (long) lld1.removeFirst());
+        assertEquals(8, (long) lld1.removeLast());
+        assertEquals(7, (long) lld1.removeLast());
+        assertEquals(6, (long) lld1.removeLast());
+        assertEquals(5, (long) lld1.removeLast());
 
         assertEquals(0, lld1.size);
+        lld1.printDeque();
 
         lld1.addFirst(1);
         lld1.addFirst(2);
@@ -161,6 +163,7 @@ public class ArrayDequeTest {
         lld1.addLast(8);
 
         assertEquals(8, lld1.size);
+        lld1.printDeque();
     }
 
     @Test

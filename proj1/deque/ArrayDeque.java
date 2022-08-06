@@ -1,7 +1,5 @@
 package deque;
 
-import java.util.Iterator;
-
 public class ArrayDeque<T> {
     T[] items;
     int size;
@@ -20,22 +18,22 @@ public class ArrayDeque<T> {
 
     public void addFirst(T item) {
         items[nextFirst] = item;
-        nextFirst = prev(nextFirst);
+        nextFirst = leftNeighbor(nextFirst);
         size++;
     }
 
-    private int prev(int curr) {
-        return (curr - 1) % items.length;
+    private int leftNeighbor(int curr) {
+        return indexOf(curr, -1);
     }
 
     public void addLast(T item) {
         items[nextLast] = item;
-        nextLast = next(nextLast);
+        nextLast = rightNeighbor(nextLast);
         size++;
     }
 
-    private int next(int curr) {
-        return (curr + 1) % items.length;
+    private int rightNeighbor(int curr) {
+        return indexOf(curr, 1);
     }
 
     public boolean isEmpty() {
@@ -48,10 +46,10 @@ public class ArrayDeque<T> {
     }
 
     public void printDeque() {
-        int i = next(nextFirst);
+        int i = rightNeighbor(nextFirst);
         while (i != nextLast) {
             System.out.print(items[i] + " ");
-            i = next(i);
+            i = rightNeighbor(i);
         }
         System.out.println();
     }
@@ -60,7 +58,7 @@ public class ArrayDeque<T> {
         if (size <= 0) {
             return null;
         }
-        int firstIndex = next(nextFirst);
+        int firstIndex = rightNeighbor(nextFirst);
         T first = items[firstIndex];
         nextFirst = firstIndex;
         size--;
@@ -71,7 +69,7 @@ public class ArrayDeque<T> {
         if (size <= 0) {
             return null;
         }
-        int lastIndex = prev(nextLast);
+        int lastIndex = leftNeighbor(nextLast);
         T last = items[lastIndex];
         nextLast = lastIndex;
         size--;
@@ -82,8 +80,13 @@ public class ArrayDeque<T> {
         if (index >= size) {
             return null;
         }
-        int i = (next(nextFirst) + index) % items.length;
+        int i = indexOf(nextFirst, 1 + index);
         return items[i];
+    }
+
+    // index > 0 means moving to right, otherwise left.
+    private int indexOf(int curr, int stepsOfMovingToRight) {
+        return Math.abs(curr + stepsOfMovingToRight) % items.length;
     }
 
 //    public Iterator<T> iterator() {

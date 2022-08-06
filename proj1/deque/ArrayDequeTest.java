@@ -84,9 +84,9 @@ public class ArrayDequeTest {
         lld1.addLast(4);
         lld1.addLast(5);
 
-        assertEquals("first element should be 3", (long) lld1.get(0), (long) 3);
-        assertEquals("second element should be 4", (long) lld1.get(1), (long) 4);
-        assertEquals("last element should be 3", (long) lld1.get(2), (long) 5);
+        assertEquals("first element should be 3", 3, (long) lld1.get(0));
+        assertEquals("second element should be 4", 4, (long) lld1.get(1));
+        assertEquals("last element should be 3", 5, (long) lld1.get(2));
 
         assertNull("fourth element should be null", lld1.get(3));
 
@@ -96,8 +96,8 @@ public class ArrayDequeTest {
     /* Check if you can create ArrayDeques with different parameterized types*/
     public void multipleParamTest() {
 
-        ArrayDeque<String>  lld1 = new ArrayDeque<String>();
-        ArrayDeque<Double>  lld2 = new ArrayDeque<Double>();
+        ArrayDeque<String> lld1 = new ArrayDeque<String>();
+        ArrayDeque<Double> lld2 = new ArrayDeque<Double>();
         ArrayDeque<Boolean> lld3 = new ArrayDeque<Boolean>();
 
         lld1.addFirst("string");
@@ -125,24 +125,63 @@ public class ArrayDequeTest {
     }
 
     @Test
-    /* Add large number of elements to deque; check if order is correct. */
-    public void bigLLDequeTest() {
+    /* fill up, empty, fill up again. */
+    public void fillThenEmptyThenFillAgainTest() {
 
         ArrayDeque<Integer> lld1 = new ArrayDeque<Integer>();
-        for (int i = 0; i < 1000000; i++) {
-            lld1.addLast(i);
-        }
+        lld1.addFirst(1);
+        lld1.addFirst(2);
+        lld1.addFirst(3);
+        lld1.addFirst(4);
+        lld1.addLast(5);
+        lld1.addLast(6);
+        lld1.addLast(7);
+        lld1.addLast(8);
 
-        for (double i = 0; i < 500000; i++) {
-            assertEquals("Should have the same value", i, (double) lld1.removeFirst(), 0.0);
-        }
+        assertEquals(8, lld1.size);
 
-        for (double i = 999999; i > 500000; i--) {
-            assertEquals("Should have the same value", i, (double) lld1.removeLast(), 0.0);
-        }
+        lld1.removeFirst();
+        lld1.removeFirst();
+        lld1.removeFirst();
+        lld1.removeFirst();
+        lld1.removeLast();
+        lld1.removeLast();
+        lld1.removeLast();
+        lld1.removeLast();
 
+        assertEquals(0, lld1.size);
 
+        lld1.addFirst(1);
+        lld1.addFirst(2);
+        lld1.addFirst(3);
+        lld1.addFirst(4);
+        lld1.addLast(5);
+        lld1.addLast(6);
+        lld1.addLast(7);
+        lld1.addLast(8);
+
+        assertEquals(8, lld1.size);
     }
+
+//    @Test
+//    /* Add large number of elements to deque; check if order is correct. */
+//    public void bigLLDequeTest() {
+//
+//        ArrayDeque<Integer> lld1 = new ArrayDeque<Integer>();
+//        for (int i = 0; i < 1000000; i++) {
+//            lld1.addLast(i);
+//        }
+//
+//        for (double i = 0; i < 500000; i++) {
+//            assertEquals("Should have the same value", i, (double) lld1.removeFirst(), 0.0);
+//        }
+//
+//        for (double i = 999999; i > 500000; i--) {
+//            assertEquals("Should have the same value", i, (double) lld1.removeLast(), 0.0);
+//        }
+//
+//
+//    }
 
 //    @Test
 //    /* Adds a few things to the list, checking iterator() is correct */

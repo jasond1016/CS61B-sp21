@@ -46,10 +46,8 @@ public class ArrayDeque<T> {
     }
 
     public void printDeque() {
-        int i = rightNeighbor(nextFirst);
-        while (i != nextLast) {
-            System.out.print(items[i] + " ");
-            i = rightNeighbor(i);
+        for (int i = 0; i < size; i++) {
+            System.out.print(get(i) + " ");
         }
         System.out.println();
     }

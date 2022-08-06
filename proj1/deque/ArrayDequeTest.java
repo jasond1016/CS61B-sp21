@@ -163,6 +163,75 @@ public class ArrayDequeTest {
         assertEquals(8, lld1.size);
     }
 
+    @Test
+    public void twoArrayDequesTest() {
+
+        ArrayDeque<Integer> lld1 = new ArrayDeque<Integer>();
+        ArrayDeque<Integer> lld2 = new ArrayDeque<Integer>();
+        lld1.addFirst(1);
+        lld1.addFirst(2);
+        lld1.addFirst(3);
+        lld1.addFirst(4);
+        lld1.addLast(5);
+        lld1.addLast(6);
+        lld1.addLast(7);
+        lld1.addLast(8);
+
+        lld2.addFirst(8);
+        lld2.addFirst(7);
+        lld2.addFirst(6);
+        lld2.addFirst(5);
+        lld2.addLast(4);
+        lld2.addLast(3);
+        lld2.addLast(2);
+        lld2.addLast(1);
+
+        assertEquals(8, lld1.size);
+        assertEquals(8, lld2.size);
+
+        lld1.removeFirst();
+        lld1.removeFirst();
+        lld1.removeFirst();
+        lld1.removeFirst();
+        lld1.removeLast();
+        lld1.removeLast();
+        lld1.removeLast();
+        lld1.removeLast();
+
+        lld2.removeLast();
+        lld2.removeLast();
+        lld2.removeLast();
+        lld2.removeLast();
+        lld2.removeFirst();
+        lld2.removeFirst();
+        lld2.removeFirst();
+        lld2.removeFirst();
+
+        assertEquals(0, lld1.size);
+        assertEquals(0, lld2.size);
+
+        lld1.addFirst(1);
+        lld1.addFirst(2);
+        lld1.addFirst(3);
+        lld1.addFirst(4);
+        lld1.addLast(5);
+        lld1.addLast(6);
+        lld1.addLast(7);
+        lld1.addLast(8);
+
+        lld2.addFirst(8);
+        lld2.addFirst(7);
+        lld2.addFirst(6);
+        lld2.addFirst(5);
+        lld2.addLast(4);
+        lld2.addLast(3);
+        lld2.addLast(2);
+        lld2.addLast(1);
+
+        assertEquals(8, lld1.size);
+        assertEquals(8, lld2.size);
+    }
+
 //    @Test
 //    /* Add large number of elements to deque; check if order is correct. */
 //    public void bigLLDequeTest() {

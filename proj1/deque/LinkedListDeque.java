@@ -83,13 +83,13 @@ public class LinkedListDeque<T> {
 
     public Iterator<T> iterator() {
         Node<T> p = sentinel;
-        return new LinkedListDequeIterator<>(p);
+        return new LinkedListDequeIterator(p);
     }
 
-    private static class LinkedListDequeIterator<T> implements Iterator<T> {
-        Node<T> last;
-        Node<T> curr;
-        public LinkedListDequeIterator(Node<T> sentinel) {
+    private class LinkedListDequeIterator implements Iterator<T> {
+        Node last;
+        Node curr;
+        public LinkedListDequeIterator(Node sentinel) {
             this.curr = sentinel;
             this.last = sentinel.prev;
         }
@@ -102,7 +102,7 @@ public class LinkedListDeque<T> {
         @Override
         public T next() {
             curr = curr.next;
-            return curr.obj;
+            return (T) curr.obj;
         }
     }
 

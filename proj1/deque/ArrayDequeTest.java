@@ -235,134 +235,134 @@ public class ArrayDequeTest {
         assertEquals(8, lld2.size);
     }
 
-//    @Test
-//    /* Add large number of elements to deque; check if order is correct. */
-//    public void bigLLDequeTest() {
-//
-//        ArrayDeque<Integer> lld1 = new ArrayDeque<Integer>();
-//        for (int i = 0; i < 1000000; i++) {
-//            lld1.addLast(i);
-//        }
-//
-//        for (double i = 0; i < 500000; i++) {
-//            assertEquals("Should have the same value", i, (double) lld1.removeFirst(), 0.0);
-//        }
-//
-//        for (double i = 999999; i > 500000; i--) {
-//            assertEquals("Should have the same value", i, (double) lld1.removeLast(), 0.0);
-//        }
-//
-//
-//    }
+    @Test
+    /* Add large number of elements to deque; check if order is correct. */
+    public void bigLLDequeTest() {
 
-//    @Test
-//    /* Adds a few things to the list, checking iterator() is correct */
-//    public void iteratorTest() {
-//
-//        ArrayDeque<String> lld1 = new ArrayDeque<String>();
-//        lld1.addFirst("front");
-//        lld1.addLast("middle");
-//        lld1.addLast("back");
-//        assertEquals(3, lld1.size());
-//
-//        Iterator<String> iterator = lld1.iterator();
-//        assertTrue(iterator.hasNext());
-//        assertEquals("front", iterator.next());
-//        assertTrue(iterator.hasNext());
-//        assertEquals("middle", iterator.next());
-//        assertTrue(iterator.hasNext());
-//        assertEquals("back", iterator.next());
-//
-//        assertFalse(iterator.hasNext());
-//        assertEquals(3, lld1.size());
-//    }
-//
-//    @Test
-//    /* Tests iterate from an empty deque */
-//    public void emptyIteratorTest() {
-//
-//        ArrayDeque<String> lld1 = new ArrayDeque<String>();
-//        assertEquals(0, lld1.size());
-//
-//        Iterator<String> iterator = lld1.iterator();
-//        assertFalse(iterator.hasNext());
-//    }
-//
-//    @Test
-//    /* Test equals true when two list are same */
-//    public void equalsTrueTest() {
-//
-//        ArrayDeque<String> lld1 = new ArrayDeque<String>();
-//        lld1.addFirst("front");
-//        lld1.addLast("middle");
-//        lld1.addLast("back");
-//
-//        ArrayDeque<String> lld2 = new ArrayDeque<String>();
-//        lld2.addFirst("front");
-//        lld2.addLast("middle");
-//        lld2.addLast("back");
-//
-//        assertTrue(lld1.equals(lld2));
-//        assertTrue(lld2.equals(lld1));
-//    }
-//
-//    @Test
-//    /* Test equals false when different size */
-//    public void equalsDifferentSizeTest() {
-//
-//        ArrayDeque<String> lld1 = new ArrayDeque<String>();
-//        lld1.addFirst("front");
-//        lld1.addLast("back");
-//
-//        ArrayDeque<String> lld2 = new ArrayDeque<String>();
-//        lld2.addFirst("front");
-//        lld2.addLast("middle");
-//        lld2.addLast("back");
-//
-//        assertFalse(lld1.equals(lld2));
-//        assertFalse(lld2.equals(lld1));
-//    }
-//
-//    @Test
-//    /* Test equals false when same size but different order */
-//    public void equalsSameSizeTest() {
-//
-//        ArrayDeque<String> lld1 = new ArrayDeque<String>();
-//        lld1.addFirst("1");
-//        lld1.addLast("2");
-//
-//        ArrayDeque<String> lld2 = new ArrayDeque<String>();
-//        lld2.addFirst("2");
-//        lld2.addLast("1");
-//
-//        assertFalse(lld1.equals(lld2));
-//        assertFalse(lld2.equals(lld1));
-//    }
-//
-//    @Test
-//    /* Test equals false when same "value" but different type */
-//    public void equalsDifferentTypeTest() {
-//
-//        ArrayDeque<String> lld1 = new ArrayDeque<String>();
-//        lld1.addFirst("1");
-//        lld1.addLast("2");
-//
-//        ArrayDeque<Integer> lld2 = new ArrayDeque<>();
-//        lld2.addFirst(1);
-//        lld2.addLast(2);
-//
-//        assertFalse(lld1.equals(lld2));
-//        assertFalse(lld2.equals(lld1));
-//    }
-//
-//    @Test
-//    /* Test equals true when two are both empty */
-//    public void equalsEmptyTest() {
-//
-//        ArrayDeque<String> lld1 = new ArrayDeque<String>();
-//        ArrayDeque<String> lld2 = new ArrayDeque<String>();
-//
-//        assertTrue(lld1.equals(lld2));
-//        assertTrue(lld2.equals(lld1));
-//    }
+        ArrayDeque<Integer> lld1 = new ArrayDeque<Integer>();
+        for (int i = 0; i < 1000000; i++) {
+            lld1.addLast(i);
+        }
+
+        for (double i = 0; i < 500000; i++) {
+            assertEquals("Should have the same value", i, (double) lld1.removeFirst(), 0.0);
+        }
+
+        for (double i = 999999; i > 500000; i--) {
+            assertEquals("Should have the same value", i, (double) lld1.removeLast(), 0.0);
+        }
+
+
+    }
+
+    @Test
+    /* Adds a few things to the list, checking iterator() is correct */
+    public void iteratorTest() {
+
+        ArrayDeque<String> lld1 = new ArrayDeque<String>();
+        lld1.addFirst("front");
+        lld1.addLast("middle");
+        lld1.addLast("back");
+        assertEquals(3, lld1.size());
+
+        Iterator<String> iterator = lld1.iterator();
+        assertTrue(iterator.hasNext());
+        assertEquals("front", iterator.next());
+        assertTrue(iterator.hasNext());
+        assertEquals("middle", iterator.next());
+        assertTrue(iterator.hasNext());
+        assertEquals("back", iterator.next());
+
+        assertFalse(iterator.hasNext());
+        assertEquals(3, lld1.size());
+    }
+
+    @Test
+    /* Tests iterate from an empty deque */
+    public void emptyIteratorTest() {
+
+        ArrayDeque<String> lld1 = new ArrayDeque<String>();
+        assertEquals(0, lld1.size());
+
+        Iterator<String> iterator = lld1.iterator();
+        assertFalse(iterator.hasNext());
+    }
+
+    @Test
+    /* Test equals true when two list are same */
+    public void equalsTrueTest() {
+
+        ArrayDeque<String> lld1 = new ArrayDeque<String>();
+        lld1.addFirst("front");
+        lld1.addLast("middle");
+        lld1.addLast("back");
+
+        ArrayDeque<String> lld2 = new ArrayDeque<String>();
+        lld2.addFirst("front");
+        lld2.addLast("middle");
+        lld2.addLast("back");
+
+        assertTrue(lld1.equals(lld2));
+        assertTrue(lld2.equals(lld1));
+    }
+
+    @Test
+    /* Test equals false when different size */
+    public void equalsDifferentSizeTest() {
+
+        ArrayDeque<String> lld1 = new ArrayDeque<String>();
+        lld1.addFirst("front");
+        lld1.addLast("back");
+
+        ArrayDeque<String> lld2 = new ArrayDeque<String>();
+        lld2.addFirst("front");
+        lld2.addLast("middle");
+        lld2.addLast("back");
+
+        assertFalse(lld1.equals(lld2));
+        assertFalse(lld2.equals(lld1));
+    }
+
+    @Test
+    /* Test equals false when same size but different order */
+    public void equalsSameSizeTest() {
+
+        ArrayDeque<String> lld1 = new ArrayDeque<String>();
+        lld1.addFirst("1");
+        lld1.addLast("2");
+
+        ArrayDeque<String> lld2 = new ArrayDeque<String>();
+        lld2.addFirst("2");
+        lld2.addLast("1");
+
+        assertFalse(lld1.equals(lld2));
+        assertFalse(lld2.equals(lld1));
+    }
+
+    @Test
+    /* Test equals false when same "value" but different type */
+    public void equalsDifferentTypeTest() {
+
+        ArrayDeque<String> lld1 = new ArrayDeque<String>();
+        lld1.addFirst("1");
+        lld1.addLast("2");
+
+        ArrayDeque<Integer> lld2 = new ArrayDeque<>();
+        lld2.addFirst(1);
+        lld2.addLast(2);
+
+        assertFalse(lld1.equals(lld2));
+        assertFalse(lld2.equals(lld1));
+    }
+
+    @Test
+    /* Test equals true when two are both empty */
+    public void equalsEmptyTest() {
+
+        ArrayDeque<String> lld1 = new ArrayDeque<String>();
+        ArrayDeque<String> lld2 = new ArrayDeque<String>();
+
+        assertTrue(lld1.equals(lld2));
+        assertTrue(lld2.equals(lld1));
+    }
 }

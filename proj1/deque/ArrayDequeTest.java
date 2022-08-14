@@ -138,7 +138,7 @@ public class ArrayDequeTest {
         lld1.addLast(7);
         lld1.addLast(8);
 
-        assertEquals(8, lld1.size);
+        assertEquals(8, lld1.size());
         lld1.printDeque();
 
         assertEquals(4, (long) lld1.removeFirst());
@@ -150,7 +150,7 @@ public class ArrayDequeTest {
         assertEquals(6, (long) lld1.removeLast());
         assertEquals(5, (long) lld1.removeLast());
 
-        assertEquals(0, lld1.size);
+        assertEquals(0, lld1.size());
         lld1.printDeque();
 
         lld1.addFirst(1);
@@ -162,7 +162,7 @@ public class ArrayDequeTest {
         lld1.addLast(7);
         lld1.addLast(8);
 
-        assertEquals(8, lld1.size);
+        assertEquals(8, lld1.size());
         lld1.printDeque();
     }
 
@@ -189,8 +189,8 @@ public class ArrayDequeTest {
         lld2.addLast(2);
         lld2.addLast(1);
 
-        assertEquals(8, lld1.size);
-        assertEquals(8, lld2.size);
+        assertEquals(8, lld1.size());
+        assertEquals(8, lld2.size());
 
         lld1.removeFirst();
         lld1.removeFirst();
@@ -210,8 +210,8 @@ public class ArrayDequeTest {
         lld2.removeFirst();
         lld2.removeFirst();
 
-        assertEquals(0, lld1.size);
-        assertEquals(0, lld2.size);
+        assertEquals(0, lld1.size());
+        assertEquals(0, lld2.size());
 
         lld1.addFirst(1);
         lld1.addFirst(2);
@@ -231,8 +231,8 @@ public class ArrayDequeTest {
         lld2.addLast(2);
         lld2.addLast(1);
 
-        assertEquals(8, lld1.size);
-        assertEquals(8, lld2.size);
+        assertEquals(8, lld1.size());
+        assertEquals(8, lld2.size());
     }
 
     @Test
@@ -361,6 +361,22 @@ public class ArrayDequeTest {
 
         ArrayDeque<String> lld1 = new ArrayDeque<String>();
         ArrayDeque<String> lld2 = new ArrayDeque<String>();
+
+        assertTrue(lld1.equals(lld2));
+        assertTrue(lld2.equals(lld1));
+    }
+
+    @Test
+    /* Test equals true when same size and order with different implementation */
+    public void equalsSameSizeDifferentImplementationTest() {
+
+        ArrayDeque<String> lld1 = new ArrayDeque<String>();
+        lld1.addFirst("1");
+        lld1.addLast("2");
+
+        LinkedListDeque<String> lld2 = new LinkedListDeque<String>();
+        lld2.addFirst("1");
+        lld2.addLast("2");
 
         assertTrue(lld1.equals(lld2));
         assertTrue(lld2.equals(lld1));

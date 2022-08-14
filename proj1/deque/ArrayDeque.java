@@ -2,11 +2,11 @@ package deque;
 
 import java.util.Iterator;
 
-public class ArrayDeque<T> implements Deque<T> {
-    T[] items;
-    int size;
-    int nextFirst;
-    int nextLast;
+public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
+    private T[] items;
+    private int size;
+    private int nextFirst;
+    private int nextLast;
 
     private static final int INITIAL_CAPACITY = 8;
 
@@ -139,7 +139,7 @@ public class ArrayDeque<T> implements Deque<T> {
     private class ArrayDequeIterator implements Iterator<T> {
         T curr;
         int index;
-        public ArrayDequeIterator() {
+        ArrayDequeIterator() {
             index = 0;
         }
 
@@ -155,16 +155,15 @@ public class ArrayDeque<T> implements Deque<T> {
     }
 
     public boolean equals(Object o) {
-        if (!(o instanceof ArrayDeque<?>)) {
+        if (!(o instanceof Deque<?>)) {
             return false;
         }
-        if (this.size != ((ArrayDeque<?>) o).size) {
+        if (this.size != ((Deque<?>) o).size()) {
             return false;
         }
-        Iterator<?> iteratorO = ((ArrayDeque<?>) o).iterator();
-        Iterator<?> iteratorT = this.iterator();
-        while (iteratorO.hasNext()) {
-            if (!iteratorO.next().equals(iteratorT.next())) {
+
+        for (int i = 0; i < this.size; i++) {
+            if (!this.get(i).equals(((Deque<?>) o).get(i))) {
                 return false;
             }
         }

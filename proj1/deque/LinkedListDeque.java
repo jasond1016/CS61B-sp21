@@ -2,9 +2,9 @@ package deque;
 
 import java.util.Iterator;
 
-public class LinkedListDeque<T> implements Deque<T> {
-    Node<T> sentinel;
-    int size;
+public class LinkedListDeque<T> implements Deque<T>, Iterable<T> {
+    private Node<T> sentinel;
+    private int size;
 
     public LinkedListDeque() {
         sentinel = new Node<>((T) new Object());
@@ -77,7 +77,7 @@ public class LinkedListDeque<T> implements Deque<T> {
         if (index >= size) {
             return null;
         }
-        Node<T> p = sentinel;
+        Node<T> p = sentinel.next;
         for (int i = 0; i < index; i++) {
             p = p.next;
         }
@@ -92,7 +92,7 @@ public class LinkedListDeque<T> implements Deque<T> {
     private class LinkedListDequeIterator implements Iterator<T> {
         Node last;
         Node curr;
-        public LinkedListDequeIterator(Node sentinel) {
+        LinkedListDequeIterator(Node sentinel) {
             this.curr = sentinel;
             this.last = sentinel.prev;
         }
@@ -110,16 +110,14 @@ public class LinkedListDeque<T> implements Deque<T> {
     }
 
     public boolean equals(Object o) {
-        if (!(o instanceof LinkedListDeque<?>)) {
+        if (!(o instanceof Deque<?>)) {
             return false;
         }
-        if (this.size != ((LinkedListDeque<?>) o).size) {
+        if (this.size != ((Deque<?>) o).size()) {
             return false;
         }
-        Iterator<?> iteratorO = ((LinkedListDeque<?>) o).iterator();
-        Iterator<?> iteratorT = this.iterator();
-        while (iteratorO.hasNext()) {
-            if (!iteratorO.next().equals(iteratorT.next())) {
+        for (int i = 0; i < this.size; i++) {
+            if (!this.get(i).equals(((Deque<?>) o).get(i))) {
                 return false;
             }
         }
@@ -146,14 +144,14 @@ public class LinkedListDeque<T> implements Deque<T> {
         Node<T> prev;
         Node<T> next;
 
-        public Node() {
+        Node() {
         }
 
-        public Node(T obj) {
+        Node(T obj) {
             this.obj = obj;
         }
 
-        public Node(T obj, Node<T> prev, Node<T> next) {
+        Node(T obj, Node<T> prev, Node<T> next) {
             this.obj = obj;
             this.prev = prev;
             this.next = next;

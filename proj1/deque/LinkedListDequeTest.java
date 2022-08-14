@@ -264,4 +264,20 @@ public class LinkedListDequeTest {
         assertEquals(null, lld1.getRecursive(1));
         assertEquals(null, lld1.getRecursive(-1));
     }
+
+    @Test
+    /* Test equals true when same size and order with different implementation */
+    public void equalsSameSizeDifferentImplementationTest() {
+
+        ArrayDeque<String> lld1 = new ArrayDeque<String>();
+        lld1.addFirst("1");
+        lld1.addLast("2");
+
+        LinkedListDeque<String> lld2 = new LinkedListDeque<String>();
+        lld2.addFirst("1");
+        lld2.addLast("2");
+
+        assertTrue(lld1.equals(lld2));
+        assertTrue(lld2.equals(lld1));
+    }
 }
